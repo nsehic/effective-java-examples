@@ -13,7 +13,7 @@ public enum PayrollDay {
 
     PayrollDay(PayType payType) { this.payType = payType; }
     PayrollDay() { this(PayType.WEEKDAY); }
-    
+
     int pay(int minutesWorked, int payRate) {
         return payType.pay(minutesWorked, payRate);
     }

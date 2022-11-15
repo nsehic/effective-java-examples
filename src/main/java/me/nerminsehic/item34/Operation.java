@@ -35,3 +35,27 @@ public enum Operation {
 
     public abstract double apply(double x, double y);
 }
+
+class OperationClient {
+    /*
+    * Switches on enums are good for augmenting types with constant-specific behaviour.
+    * In this example, we have a method that is inversion an Operation.
+    * */
+    public static Operation inverse(Operation op) {
+        switch(op) {
+            case PLUS -> {
+                return Operation.MINUS;
+            }
+            case MINUS -> {
+                return Operation.PLUS;
+            }
+            case TIMES -> {
+                return Operation.DIVIDE;
+            }
+            case DIVIDE -> {
+                return Operation.TIMES;
+            }
+            default -> throw new AssertionError("Unknown op: " + op);
+        }
+    }
+}
