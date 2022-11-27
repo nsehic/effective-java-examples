@@ -33,12 +33,17 @@ public class RunTests {
                     System.out.printf("Test %s failed: no exception%n", m);
                 } catch(InvocationTargetException wrappedExc) {
                     Throwable exc = wrappedExc.getCause();
-                    Class<? extends Throwable> excType = m.getAnnotation(ExceptionTest.class).value();
-                    if(excType.isInstance(exc)) {
-                        passed++;
-                    } else {
-                        System.out.printf("Test %s failed: expected %s, got %s%n", m, excType.getName(), exc);
+                    int oldPassed = passed;
+                    Class<? extends Throwable>[] excTypes = m.getAnnotation(ExceptionTest.class).value();
+
+                    for(Class<? extends Throwable> excType: excTypes) {
+                        if(excType.isInstance(exc)) {
+                            passed++;
+                            break;
+                        }
                     }
+                    if(passed == oldPassed)
+                        System.out.printf("Test %s failed: %s %n", m, exc);
                 } catch(Exception exc) {
                     System.out.println("Invalid @Test: " + m);
                 }
