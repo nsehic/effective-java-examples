@@ -11,7 +11,7 @@ public enum Operation {
 
     private final String symbol;
     private final DoubleBinaryOperator op;
-    
+
     Operation(String symbol, DoubleBinaryOperator op) {
         this.symbol = symbol;
         this.op = op;
