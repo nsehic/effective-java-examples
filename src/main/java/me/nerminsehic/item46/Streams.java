@@ -1,8 +1,6 @@
 package me.nerminsehic.item46;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -28,5 +26,10 @@ public class Streams {
         try(Stream<String> words = new Scanner(file).tokens()) {
             freq = words.collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
         }
+
+        List<String> topTen = freq.keySet().stream()
+                .sorted(Comparator.comparing(freq::get).reversed())
+                .limit(10)
+                .toList();
     }
 }
