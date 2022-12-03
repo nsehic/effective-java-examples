@@ -27,6 +27,18 @@ public class CollectionClassifier {
         return "Unknown collection";
     }
 
+    /**
+     * Assuming a static method is required, the best way to fix the CollectionClassifier
+     * program is to replace all three overloadings of classify with a single method that does
+     * explicit instanceof tests.
+     * @param collection
+     * @return String classifier
+     */
+    public static String classifyGood(Collection<?> collection) {
+        return collection instanceof Set ? "Set" :
+                collection instanceof List ? "List" : "Unknown collection";
+    }
+
     public static void main(String[] args) {
         Collection<?>[] collections = {
                 new HashSet<String>(),

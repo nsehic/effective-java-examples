@@ -16,6 +16,14 @@ class Champagne extends SparklingWine {
     String name() { return "champagne"; }
 }
 
+/**
+ * The `name` method is declared in class `Wine` and overridden in subclasses
+ * `SparklingWine` and `Champagne`. As you would expect, this program prints out wine, sparkling wine,
+ * and champagne, even though the compile-time type of the instance is Wine in each iteration of the loop.
+ *
+ * The compile-time type of object has no effect on which method is executed when an overridden method is invoked;
+ * the "most specific" overriding always gets executed.
+ */
 public class Overriding {
     public static void main(String[] args) {
         List<Wine> wineList = List.of(
