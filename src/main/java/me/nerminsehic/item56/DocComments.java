@@ -23,4 +23,28 @@ public interface DocComments<E> {
      * @return true if this collection is empty
      */
     boolean isEmpty();
+
+    /**
+     * This method compiles with the {@index IEEE 754} standard.
+     */
+    void indexExample();
+}
+
+
+// Doc comments are 'inherited' from superclasses or interfaces.
+class ImplementationExample implements DocComments<String> {
+    @Override
+    public String get(int index) {
+        return null;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public void indexExample() {
+
+    }
 }
